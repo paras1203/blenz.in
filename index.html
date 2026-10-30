@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blenz — LOaaS & AI Tools for Business Professionals</title>
+  <meta name="description" content="Blenz offers LOaaS — Logistics Office as a Service — for businesses entering India, and Oscar, an AI-powered contact management app for professionals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20260226" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('blenz-theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+          return;
+        }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-wrap" id="nav">
+  <nav class="nav container">
+    <a href="index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <button class="nav-btn">Solutions <span class="nav-chevron">▾</span></button>
+        <div class="dropdown">
+          <a href="AI-SaaS/oscar.html" class="dropdown-item">
+            <span class="ditem-name">Oscar App</span>
+            <span class="badge-beta">Beta</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="logistics/solutions.html" class="dropdown-item">
+            <span class="ditem-name">LOaaS</span>
+          </a>
+        </div>
+      </li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+          <span class="theme-toggle__label" data-theme-label>Dark</span>
+        </button>
+      </li>
+    </ul>
+    <a href="#contact" class="btn btn-outline-sm nav-cta">Book a Call</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="AI-SaaS/oscar.html">Oscar App <span class="badge-beta">Beta</span></a>
+    <a href="logistics/solutions.html">LOaaS</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+      <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+      <span class="theme-toggle__label" data-theme-label>Dark</span>
+    </button>
+    <a href="#contact" class="btn btn-outline-sm">Book a Call</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="container hero-inner" data-animate>
+    <div class="hero-badge-row">
+      <span class="badge badge-violet">Oscar App — AI Contact Management <span class="badge-beta" style="margin-left:4px">Beta</span></span>
+      <span class="badge badge-gold">LOaaS — Logistics Office as a Service</span>
+    </div>
+    <h1 class="hero-title">
+      Intelligent systems<br />for <em>trade &amp; business.</em>
+    </h1>
+    <p class="hero-sub">
+      Blenz operates two distinct solutions — LOaaS, a plug-and-play logistics and market entry model for global businesses entering India, and Oscar, an AI-powered contact management app for business professionals.
+    </p>
+    <div class="hero-ctas">
+      <a href="AI-SaaS/oscar.html" class="btn btn-violet">Explore Oscar →</a>
+      <a href="logistics/solutions.html" class="btn btn-outline">Explore LOaaS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section section--dark" id="products">
+  <div class="container">
+    <p class="section-label" data-animate>Our Solutions</p>
+    <h2 class="section-title" data-animate>Two solutions.<br />One company.</h2>
+    <div class="products-grid">
+
+      <div class="prod-card prod-card--primary" data-animate>
+        <p class="prod-card__label">Product — AI &amp; Productivity</p>
+        <h3>Oscar <span class="badge-beta" style="vertical-align:middle;margin-left:6px">Beta</span></h3>
+        <p>An AI-powered contact management app for professionals who need to capture, organise, and act on their network. Scan business cards, enhance contacts with AI, and stay on top of your professional relationships — from your pocket.</p>
+        <div class="prod-card__tags">
+          <span class="prod-tag">Business Card Scanner</span>
+          <span class="prod-tag">AI Contact Enrichment</span>
+          <span class="prod-tag">Relationship Management</span>
+          <span class="prod-tag">Android</span>
+        </div>
+        <a href="AI-SaaS/oscar.html" class="prod-card__link">Explore Oscar →</a>
+      </div>
+
+      <div class="prod-card prod-card--secondary" data-animate>
+        <p class="prod-card__label">Service — Trade &amp; Cross-border</p>
+        <h3>LOaaS — Logistics Office<br />as a Service</h3>
+        <p>A plug-and-play market entry and logistics model for global companies entering India — without setting up a legal entity or building infrastructure. We act as your on-ground operational arm.</p>
+        <div class="prod-card__tags">
+          <span class="prod-tag">Market Entry</span>
+          <span class="prod-tag">3PL Execution</span>
+          <span class="prod-tag">EXIM Compliance</span>
+          <span class="prod-tag">Warehousing</span>
+        </div>
+        <a href="logistics/solutions.html" class="prod-card__link">Explore LOaaS →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-label" data-animate>About Blenz</p>
+    <div class="about-grid">
+      <div data-animate>
+        <h2 class="section-title">A focused company.<br />Two deep capabilities.</h2>
+        <p class="body-text">Blenz is an India-based company built around two core beliefs: that cross-border trade should be accessible and operationally sound for businesses of all sizes, and that professionals deserve better tools to manage their most valuable asset — their relationships.</p>
+        <p class="body-text">We don't try to do everything. We go deep in areas where operational expertise and intelligent technology can create real, measurable impact for our clients.</p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-val">LOaaS</div>
+            <div class="stat-label">Trade &amp; Cross-border</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">AI</div>
+            <div class="stat-label">Contact &amp; Productivity</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">India</div>
+            <div class="stat-label">Based &amp; Operating</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">Global</div>
+            <div class="stat-label">Reach &amp; Partnerships</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-points" data-animate>
+        <div class="about-point">
+          <div class="about-point-num">01</div>
+          <div>
+            <h4>LOaaS — market entry without the overhead</h4>
+            <p>We enable global businesses to enter and operate in India without a legal entity, local team, or infrastructure investment — through a fully managed, plug-and-play operational model.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-num">02</div>
+          <div>
+            <h4>AI tools for real workflows</h4>
+            <p>Oscar is built for professionals who actually go to meetings, collect cards, and need to follow up. AI should reduce friction — not add it.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-num">03</div>
+          <div>
+            <h4>India-first, globally connected</h4>
+            <p>We understand the regulatory, commercial, and cultural nuances of doing business in and through India — and we use that to our clients' advantage.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-num">04</div>
+          <div>
+            <h4>Boutique by design</h4>
+            <p>We take on fewer engagements so we can go deeper on each. You get access to decision-makers, not account managers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div data-animate>
+        <p class="eyebrow">Get in Touch</p>
+        <h2 class="section-title">Let's talk<br />about your business.</h2>
+        <p class="body-text">Whether you're looking to enter the Indian market, explore LOaaS for your business, or want to see what Oscar can do for your team — we'd welcome a conversation.</p>
+        <div class="contact-note">
+          <span class="note-icon">⬖</span>
+          <p>Most conversations start with a 30-minute call. No decks, no hard sell — just an honest discussion about whether we can help.</p>
+        </div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px;">
+          <a href="mailto:connect@blenz.in" style="font-size:15px;color:var(--gold);">connect@blenz.in</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-animate>
+        <input type="hidden" name="access_key" value="d7b3570d-6a88-4995-aeb2-5bd0e53aa7c1" />
+        <input type="hidden" name="subject" value="Blenz contact form" />
+        <input type="hidden" name="redirect" id="form-redirect" value="" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="femail">Work Email</label>
+            <input type="email" id="femail" name="email" placeholder="you@company.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fcompany">Company / Organisation</label>
+          <input type="text" id="fcompany" name="company" placeholder="Your company" />
+        </div>
+        <div class="form-group">
+          <label>I'm interested in</label>
+          <div class="service-toggle">
+            <button type="button" class="svc-btn active" data-val="oscar">Oscar</button>
+            <button type="button" class="svc-btn" data-val="logistics">Logistics</button>
+            <button type="button" class="svc-btn" data-val="both">Both</button>
+          </div>
+          <input type="hidden" id="fservice" name="service" value="oscar" />
+        </div>
+        <div class="form-group">
+          <label for="fmsg">What's on your mind?</label>
+          <textarea id="fmsg" name="message" rows="4" placeholder="Tell us about your situation or what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit">Send Message →</button>
+        <p class="form-note">We typically respond within 1 business day.</p>
+        <div class="form-success hidden" id="form-success">✓ Message sent. We'll be in touch shortly.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+      <p>LOaaS &amp; AI tools for business professionals.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Solutions</p>
+        <a href="AI-SaaS/oscar.html">Oscar App</a>
+        <a href="logistics/solutions.html">LOaaS</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <a href="AI-SaaS/privacy.html">Privacy Policy</a>
+        <a href="AI-SaaS/terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Blenz. All rights reserved.</p>
+    <p>connect@blenz.in</p>
+  </div>
+</footer>
+
+<script src="script.js?v=20260226"></script>
+</body>
+</html>

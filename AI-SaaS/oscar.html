@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oscar — AI-Powered Contact Management by Blenz</title>
+  <meta name="description" content="Oscar is an AI-powered contact management and productivity app. Scan business cards, organise contacts, and stay on top of your professional network." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=20260309" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('blenz-theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+          return;
+        }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<header class="nav-wrap scrolled" id="nav">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <button class="nav-btn">Solutions <span class="nav-chevron">▾</span></button>
+        <div class="dropdown">
+          <a href="oscar.html" class="dropdown-item" style="color:var(--text)">
+            <span class="ditem-name">Oscar App</span>
+            <span class="badge-beta">Beta</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="../logistics/solutions.html" class="dropdown-item">
+            <span class="ditem-name">LOaaS</span>
+          </a>
+        </div>
+      </li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+          <span class="theme-toggle__label" data-theme-label>Dark</span>
+        </button>
+      </li>
+    </ul>
+    <a href="../index.html#contact" class="btn btn-violet nav-cta" data-service="oscar">Book a Call</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="oscar.html">Oscar App <span class="badge-beta">Beta</span></a>
+    <a href="../logistics/solutions.html">LOaaS</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#contact">Contact</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+      <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+      <span class="theme-toggle__label" data-theme-label>Dark</span>
+    </button>
+    <a href="../index.html#contact" class="btn btn-violet" data-service="oscar">Book a Call</a>
+  </div>
+</header>
+
+<section class="section--dark page-hero" id="hero">
+  <div class="container">
+    <div class="oscar-header" data-animate>
+      <div class="oscar-mark-wrap">
+        <div class="oscar-mark">O</div>
+        <span class="badge-beta oscar-beta">Beta</span>
+      </div>
+      <div>
+        <div class="eyebrow eyebrow--violet">Oscar by Blenz</div>
+        <h1 class="section-title" style="font-size:clamp(36px,5vw,56px)">Contact management,<br /><span class="text-violet">powered by AI.</span></h1>
+        <p class="body-text" style="max-width:500px">Oscar helps professionals capture, organise, and act on their network. Scan a business card in seconds, let AI clean and enhance the data, and keep your contacts where they belong — accessible and actionable.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+          <a href="../index.html#contact" class="btn btn-violet" data-service="oscar">Request Early Access →</a>
+          <a href="#features" class="btn btn-outline">See Features</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <p class="section-label" data-animate>Core Features</p>
+    <h2 class="section-title" data-animate>Everything you need to<br />manage your professional network.</h2>
+    <div class="feature-grid" data-animate>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">◉</div>
+        <h4>Business Card Scanner</h4>
+        <p>Point your camera at any business card. Oscar reads the text instantly, on your device, and creates a structured contact — no manual typing.</p>
+      </div>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">✦</div>
+        <h4>AI Contact Enhancement</h4>
+        <p>Oscar uses AI to clean, correct, and complete the information on a scanned card — so your contacts are accurate from day one.</p>
+      </div>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">⊞</div>
+        <h4>Contact Organisation</h4>
+        <p>Search, filter, and access your contacts with ease. Notes, tags, and a clean view — so you always find who you're looking for.</p>
+      </div>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">↗</div>
+        <h4>One-Tap Actions</h4>
+        <p>Call, email, visit a website, or message someone directly from the contact screen. No context-switching.</p>
+      </div>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">⇄</div>
+        <h4>Share &amp; Export</h4>
+        <p>Share individual contacts via WhatsApp, SMS, vCard, or email. Export all contacts as a spreadsheet — for Pro users.</p>
+      </div>
+      <div class="feat-card feat-card--violet">
+        <div class="feat-icon" style="color:var(--violet-light)">☁</div>
+        <h4>Cloud Backup &amp; Restore</h4>
+        <p>Your contact data syncs securely to the cloud. Pro users can restore their entire library if they switch devices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="split-layout">
+      <div data-animate>
+        <div class="eyebrow eyebrow--violet">Who It's For</div>
+        <h2 class="section-title">Built for anyone who<br />lives by their network.</h2>
+        <p class="body-text">Whether you're collecting ten cards at a conference or managing hundreds of professional relationships, Oscar keeps your contact data clean, structured, and useful.</p>
+        <p class="body-text">Oscar is currently available on Android. iOS is on the roadmap.</p>
+        <div class="for-whom" style="margin-top:36px;padding-top:0;border:none">
+          <div class="tags">
+            <span class="tag tag--violet">Sales Professionals</span>
+            <span class="tag tag--violet">Business Development</span>
+            <span class="tag tag--violet">Consultants &amp; Advisors</span>
+            <span class="tag tag--violet">Founders &amp; CXOs</span>
+            <span class="tag tag--violet">Recruiters</span>
+            <span class="tag tag--violet">SMEs &amp; Startups</span>
+          </div>
+        </div>
+      </div>
+      <div class="split-features" data-animate>
+        <div class="feat-item">
+          <div class="feat-num feat-num--violet">01</div>
+          <div>
+            <h4>No manual entry</h4>
+            <p>Scan a card instead of typing out every field. Saves time and reduces errors, especially when you're collecting several at once.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num feat-num--violet">02</div>
+          <div>
+            <h4>AI cleans the data</h4>
+            <p>OCR isn't perfect. Oscar uses AI to fix what it misses — so your contacts don't have garbled names or incomplete numbers.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num feat-num--violet">03</div>
+          <div>
+            <h4>Your data, your device</h4>
+            <p>Scanned card images are never uploaded. Only the extracted contact text is stored. You can delete everything at any time.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num feat-num--violet">04</div>
+          <div>
+            <h4>Referral rewards</h4>
+            <p>Share Oscar with your network. When they join, both of you benefit — with bonus scans or free Pro access.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container">
+    <p class="section-label" data-animate>Pricing</p>
+    <h2 class="section-title" data-animate>Start free.<br />Upgrade when you need more.</h2>
+    <p class="body-text" data-animate style="max-width:480px">Oscar is free to use. Pro unlocks higher scan limits, export, cloud restore, and more — for less than a cup of coffee per month.</p>
+    <div class="pricing-grid" data-animate>
+      <div class="price-card">
+        <p class="price-tier">Free</p>
+        <div class="price-amount">₹0 <span>/mo</span></div>
+        <p class="price-period">No credit card required</p>
+        <ul class="price-list">
+          <li>10 card scans per month</li>
+          <li>Unlimited contact storage</li>
+          <li>One-tap call, email &amp; web</li>
+          <li>5 device contact adds per month</li>
+          <li>Single-contact sharing</li>
+        </ul>
+        <a href="../index.html#contact" class="btn btn-outline" style="width:100%;justify-content:center" data-service="oscar">Get Early Access</a>
+      </div>
+      <div class="price-card price-card--featured">
+        <p class="price-tier">Pro</p>
+        <div class="price-amount">₹99 <span>/mo</span></div>
+        <p class="price-period">₹699/year · 7-day free trial</p>
+        <ul class="price-list">
+          <li>50 card scans per month</li>
+          <li>Export all contacts</li>
+          <li>Unlimited device contact adds</li>
+          <li>Cloud backup &amp; restore</li>
+          <li>Priority AI corrections</li>
+        </ul>
+        <a href="../index.html#contact" class="btn btn-violet" style="width:100%;justify-content:center" data-service="oscar">Start Free Trial</a>
+        <p class="price-note">International: $2.99/mo · $19.99/yr</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="coming-soon-card" data-animate>
+      <div class="eyebrow eyebrow--violet" style="margin-bottom:12px">What's Next</div>
+      <h4>Oscar is growing.</h4>
+      <p>The current version is in beta. We're building toward a comprehensive productivity platform for working professionals — one that goes beyond contact management to include outreach, follow-up tracking, and relationship intelligence. If you want early access or want to shape what we build, get in touch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="container">
+    <div class="cta-bar" data-animate>
+      <p>Oscar is in <strong>closed beta</strong>. Join the waitlist or book a demo to be among the first to use it.</p>
+      <div class="cta-bar-btns">
+        <a href="../index.html#contact" class="btn btn-violet" data-service="oscar">Request Access →</a>
+        <a href="../index.html#contact" class="btn btn-ghost" data-service="oscar-waitlist">Join Waitlist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+      <p>LOaaS &amp; AI tools for business professionals.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Solutions</p>
+        <a href="oscar.html">Oscar App</a>
+        <a href="../logistics/solutions.html">LOaaS</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Blenz. All rights reserved. · Oscar is a product of Blenz.</p>
+    <p>connect@blenz.in</p>
+  </div>
+</footer>
+
+<script src="../script.js?v=20260309"></script>
+</body>
+</html>

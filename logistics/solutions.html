@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOaaS — Logistics Office as a Service | Blenz</title>
+  <meta name="description" content="LOaaS by Blenz is a plug-and-play logistics and market entry model for global companies entering India — without setting up a legal entity or building infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('blenz-theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+          return;
+        }
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    /* ── LOaaS page-specific styles ─────────────────── */
+    .loaas-hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+    .loaas-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,168,78,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,168,78,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 40% 50%, black 30%, transparent 100%);
+    }
+    .loaas-hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(200,168,78,0.06);
+      filter: blur(100px);
+      right: -100px; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .loaas-hero-content { position: relative; z-index: 1; max-width: 680px; padding-block: 60px; }
+    .loaas-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(200,168,78,0.2);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .loaas-headline {
+      font-family: var(--font-head);
+      font-size: clamp(34px, 5.5vw, 60px);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
+    }
+    .loaas-headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .loaas-subhead {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--soft);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    /* Divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin-block: 0;
+    }
+
+    /* What is LOaaS */
+    .loaas-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .loaas-intro-quote {
+      padding: 28px 32px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      background: var(--surface-2);
+      margin-top: 32px;
+    }
+    .loaas-intro-quote p {
+      font-family: var(--font-head);
+      font-size: 17px; font-weight: 600;
+      line-height: 1.6; color: var(--text);
+      margin: 0;
+    }
+
+    /* Who it's for */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .audience-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      position: relative; overflow: hidden;
+    }
+    .audience-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .audience-card--global::before { background: linear-gradient(90deg, var(--gold), rgba(200,168,78,0.2)); }
+    .audience-card--india::before { background: linear-gradient(90deg, var(--violet-light), rgba(157,112,245,0.2)); }
+    .audience-type {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .audience-card--global .audience-type { color: var(--gold); }
+    .audience-card--india .audience-type { color: var(--violet-light); }
+    .audience-card h3 {
+      font-family: var(--font-head); font-size: 22px; font-weight: 700;
+      line-height: 1.25; margin-bottom: 14px;
+    }
+    .audience-card p { font-size: 15px; color: var(--soft); line-height: 1.7; margin-bottom: 20px; }
+    .audience-list { display: flex; flex-direction: column; gap: 9px; }
+    .audience-list li {
+      font-size: 14px; color: var(--soft);
+      padding-left: 18px; position: relative;
+    }
+    .audience-list li::before { content: '→'; position: absolute; left: 0; font-size: 12px; }
+    .audience-card--global .audience-list li::before { color: var(--gold); }
+    .audience-card--india .audience-list li::before { color: var(--violet-light); }
+
+    /* Delivers */
+    .delivers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .deliver-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      transition: border-color 0.2s;
+    }
+    .deliver-card:hover { border-color: rgba(200,168,78,0.2); }
+    .deliver-num {
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.08em; margin-bottom: 12px;
+    }
+    .deliver-card h4 {
+      font-family: var(--font-head); font-size: 19px; font-weight: 700;
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .deliver-card ul { display: flex; flex-direction: column; gap: 9px; }
+    .deliver-card li {
+      font-size: 14px; color: var(--soft); line-height: 1.65;
+      padding-left: 16px; position: relative;
+    }
+    .deliver-card li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+
+    /* 90-Day Pilot */
+    .pilot-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 20px; margin-bottom: 40px;
+    }
+    .pilot-retainer {
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      background: var(--gold-dim);
+      border: 1px solid rgba(200,168,78,0.25);
+    }
+    .pilot-retainer .ret-label { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+    .pilot-retainer .ret-amount { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--gold); }
+
+    .pilot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .pilot-month {
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      position: relative;
+    }
+    .pilot-month::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .month-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .pilot-month h4 {
+      font-family: var(--font-head); font-size: 18px; font-weight: 700;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .pilot-month ul { display: flex; flex-direction: column; gap: 9px; }
+    .pilot-month li {
+      font-size: 14px; color: var(--soft); line-height: 1.6;
+      padding-left: 16px; position: relative;
+    }
+    .pilot-month li::before { content: '·'; position: absolute; left: 4px; color: var(--gold); font-size: 18px; line-height: 1; }
+
+    /* Engagement Model */
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .engagement-card {
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .eng-num {
+      font-family: var(--font-head); font-size: 32px; font-weight: 800;
+      color: var(--surface-2); -webkit-text-stroke: 1px rgba(200,168,78,0.3);
+      margin-bottom: 14px; line-height: 1;
+    }
+    .engagement-card h4 {
+      font-family: var(--font-head); font-size: 17px; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .engagement-card p { font-size: 14px; color: var(--soft); line-height: 1.7; margin: 0; }
+    .eng-optional {
+      display: inline-block; margin-top: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* Closing */
+    .closing-section {
+      padding-block: 100px;
+      text-align: center;
+    }
+    .closing-statement {
+      font-family: var(--font-head);
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      max-width: 740px;
+      margin: 0 auto 40px;
+    }
+    .closing-statement em { font-style: normal; color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .loaas-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .delivers-grid { grid-template-columns: 1fr; }
+      .pilot-grid { grid-template-columns: 1fr; }
+      .engagement-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .pilot-header { flex-direction: column; align-items: flex-start; }
+      .closing-section { padding-block: 64px; }
+    }
+
+    /* ── NEW SECTIONS ─────────────────────────────────── */
+
+    /* Pricing Tiers */
+    .pricing-tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .tier-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .tier-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .tier-card--featured {
+      border-color: rgba(200,168,78,0.25);
+      background: linear-gradient(160deg, var(--surface), var(--loaas-featured-accent));
+    }
+    .tier-card--featured::after {
+      content: 'Most Comprehensive';
+      position: absolute; top: -1px; right: 20px;
+      background: var(--gold); color: #0a0800;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+      padding: 3px 10px; border-radius: 0 0 7px 7px;
+    }
+    .tier-name {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .tier-title {
+      font-family: var(--font-head); font-size: 18px; font-weight: 700;
+      line-height: 1.25; margin-bottom: 10px;
+    }
+    .tier-price {
+      font-family: var(--font-head); font-size: 24px; font-weight: 800;
+      color: var(--gold); line-height: 1; margin-bottom: 4px;
+    }
+    .tier-price-label { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+    .tier-list { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .tier-list li {
+      font-size: 14px; color: var(--soft); line-height: 1.6;
+      padding-left: 18px; position: relative;
+    }
+    .tier-list li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+    .tier-note {
+      font-size: 13px; color: var(--muted);
+      margin-top: 36px; padding: 16px 20px;
+      border-radius: 8px; background: var(--surface-2);
+      border: 1px solid var(--border); line-height: 1.7;
+    }
+
+    /* Comparison Table */
+    .compare-wrap { margin-top: 48px; overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      font-family: var(--font-head); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 14px 22px; color: var(--muted); text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .compare-table th:first-child { width: 22%; }
+    .compare-table td {
+      padding: 16px 22px; font-size: 14px; color: var(--muted);
+      border-bottom: 1px solid var(--border); vertical-align: middle;
+    }
+    .compare-table tbody tr:hover td { background: rgba(255,255,255,0.01); }
+    .compare-table tr.loaas-row { background: linear-gradient(90deg, rgba(200,168,78,0.06), rgba(200,168,78,0.02) 60%, transparent); }
+    .compare-table tr.loaas-row td { border-bottom-color: rgba(200,168,78,0.15); }
+    .compare-table tr.loaas-row td:first-child { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--gold); }
+    .score { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+    .score--high { color: var(--gold); }
+    .score--high::before { content: '◉'; font-size: 10px; }
+    .score--medium { color: var(--soft); }
+    .score--medium::before { content: '◎'; font-size: 10px; }
+    .score--none { color: var(--muted); }
+    .score--pp { color: var(--violet-light); font-weight: 600; }
+    .score--pp::before { content: '◈'; font-size: 10px; margin-right: 2px; }
+    .compare-caption {
+      font-size: 15px; color: var(--soft); margin-top: 24px;
+      line-height: 1.7; padding: 20px 24px;
+      border-radius: var(--radius); background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+    }
+
+    /* Entry Cards */
+    .entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .entry-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .entry-card:hover { border-color: rgba(200,168,78,0.2); transform: translateY(-3px); }
+    .entry-num {
+      font-family: var(--font-head); font-size: 48px; font-weight: 800;
+      line-height: 1; margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(200,168,78,0.3), rgba(200,168,78,0.05));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .entry-card h4 {
+      font-family: var(--font-head); font-size: 18px; font-weight: 700;
+      margin-bottom: 12px; line-height: 1.25;
+    }
+    .entry-card p { font-size: 15px; color: var(--soft); line-height: 1.7; margin: 0; }
+
+    /* When LOaaS Makes Sense */
+    .sense-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
+    .sense-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px 24px; border-radius: var(--radius);
+      background: var(--surface-2); border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .sense-item:hover { border-color: rgba(200,168,78,0.2); }
+    .sense-check {
+      width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0;
+      background: var(--gold-dim); border: 1px solid rgba(200,168,78,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 12px; font-weight: 700; margin-top: 1px;
+    }
+    .sense-item p { font-size: 15px; color: var(--text); font-weight: 500; margin: 0; line-height: 1.55; }
+
+    /* 90-Day Outcomes */
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 48px; }
+    .outcome-item {
+      padding: 28px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--surface);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .outcome-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(200,168,78,0.07); border: 1px solid rgba(200,168,78,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; line-height: 1;
+    }
+    .outcome-item h4 { font-family: var(--font-head); font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+    .outcome-item p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* Ideal Client Profile */
+    .icp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px; }
+    .icp-item {
+      display: flex; gap: 14px; align-items: center;
+      padding: 20px 24px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--surface-2);
+      transition: border-color 0.2s;
+    }
+    .icp-item:hover { border-color: rgba(200,168,78,0.2); }
+    .icp-icon {
+      width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+      background: var(--gold-dim); border: 1px solid rgba(200,168,78,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .icp-item p { font-size: 14px; font-weight: 500; color: var(--text); margin: 0; line-height: 1.45; }
+
+    /* Final CTA */
+    .final-cta {
+      padding-block: 110px; text-align: center;
+      background: var(--surface);
+      position: relative; overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,168,78,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,168,78,0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
+    }
+    .final-cta-inner { position: relative; z-index: 1; }
+    .final-cta h2 {
+      font-family: var(--font-head);
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .final-cta .cta-copy {
+      font-size: 17px; color: var(--soft);
+      max-width: 480px; margin: 0 auto 36px; line-height: 1.75;
+    }
+    .final-cta .cta-subtext { font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+    @media (max-width: 1024px) {
+      .pricing-tier-grid { grid-template-columns: 1fr; }
+      .entry-grid { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: 1fr 1fr; }
+      .icp-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .sense-grid { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .icp-grid { grid-template-columns: 1fr; }
+      .compare-table th, .compare-table td { padding: 10px 14px; font-size: 13px; }
+      .final-cta { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-wrap scrolled" id="nav">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <button class="nav-btn">Solutions <span class="nav-chevron">▾</span></button>
+        <div class="dropdown">
+          <a href="../AI-SaaS/oscar.html" class="dropdown-item">
+            <span class="ditem-name">Oscar App</span>
+            <span class="badge-beta">Beta</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="solutions.html" class="dropdown-item" style="color:var(--text)">
+            <span class="ditem-name">LOaaS</span>
+          </a>
+        </div>
+      </li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+          <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+          <span class="theme-toggle__label" data-theme-label>Dark</span>
+        </button>
+      </li>
+    </ul>
+    <a href="../index.html#contact" class="btn btn-gold nav-cta" data-service="logistics">Book a Consultation</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../AI-SaaS/oscar.html">Oscar App <span class="badge-beta">Beta</span></a>
+    <a href="solutions.html">LOaaS</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#contact">Contact</a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to light theme">
+      <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☾</span>
+      <span class="theme-toggle__label" data-theme-label>Dark</span>
+    </button>
+    <a href="../index.html#contact" class="btn btn-outline-sm">Book a Call</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="loaas-hero">
+  <div class="loaas-hero-grid"></div>
+  <div class="loaas-hero-glow"></div>
+  <div class="container">
+    <div class="loaas-hero-content" data-animate>
+      <div class="loaas-kicker">LOaaS — Logistics Office as a Service</div>
+      <h1 class="loaas-headline">
+        Enter India.<br />
+        Operate Seamlessly.<br />
+        <em>Scale Without Infrastructure.</em>
+      </h1>
+      <p class="loaas-subhead">
+        LOaaS is a plug-and-play logistics and market entry model for global exporters entering India — and Indian exporters building structured, scalable operations.
+      </p>
+      <div class="hero-ctas">
+        <a href="../index.html#contact" class="btn btn-gold" data-service="logistics">Book a Strategic Consultation →</a>
+        <a href="#what-is-loaas" class="btn btn-outline">What Is LOaaS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT IS LOAAS -->
+<section class="section" id="what-is-loaas">
+  <div class="container">
+    <div class="loaas-intro-grid">
+      <div data-animate>
+        <div class="eyebrow eyebrow--gold">What Is LOaaS</div>
+        <h2 class="section-title">Your operational office<br />in India — without<br /><span class="text-gold">setting one up.</span></h2>
+        <p class="body-text">LOaaS — Logistics Office as a Service — is a managed operational infrastructure model that enables global companies to enter and operate in India without setting up a legal entity, hiring a local team, or investing in physical infrastructure.</p>
+        <p class="body-text">Through LOaaS, Blenz functions as your on-ground operational arm. We take ownership of compliance, vendor relationships, customs execution, and logistics coordination — while you retain full commercial control and strategic direction.</p>
+        <p class="body-text">This is not freight forwarding. It is not a courier arrangement. LOaaS is a structured, retainer-based partnership designed for businesses that want to grow in India without the complexity that typically comes with it.</p>
+        <div class="loaas-intro-quote">
+          <p>"India is one of the world's most significant emerging markets — and one of its most operationally complex. LOaaS gives you the infrastructure to act like you're already here, without being here."</p>
+        </div>
+      </div>
+      <div data-animate>
+        <div class="split-features">
+          <div class="feat-item">
+            <div class="feat-num feat-num--gold">01</div>
+            <div>
+              <h4>No legal entity required</h4>
+              <p>Operate in India commercially without incorporation — LOaaS provides the operational and compliance layer that makes this possible.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-num feat-num--gold">02</div>
+            <div>
+              <h4>Plug-and-play activation</h4>
+              <p>LOaaS integrates into your existing business model. No infrastructure build-out, no long ramp-up — operational from the first engagement cycle.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-num feat-num--gold">03</div>
+            <div>
+              <h4>Full-stack operational scope</h4>
+              <p>From regulatory compliance and customs to warehousing, last-mile, and buyer relationships — LOaaS covers the entire operational surface area.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-num feat-num--gold">04</div>
+            <div>
+              <h4>Aligned incentives</h4>
+              <p>We operate as a strategic partner, not a vendor. Our engagement model is structured so that your growth is our growth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHO IT'S FOR -->
+<section class="section section--dark" id="who">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Who It's For</div>
+    <h2 class="section-title" data-animate>Two distinct use cases.<br />One operational model.</h2>
+    <div class="audience-grid">
+
+      <div class="audience-card audience-card--global" data-animate>
+        <div class="audience-type">Global Suppliers &amp; Brands</div>
+        <h3>Entering India without the overhead</h3>
+        <p>For international companies that want market access, distribution presence, or sourcing partnerships in India — without the cost and complexity of incorporation, regulatory compliance, and team-building.</p>
+        <ul class="audience-list">
+          <li>International brands testing the Indian market</li>
+          <li>Overseas manufacturers seeking Indian distribution</li>
+          <li>Global exporters with active Indian demand but no operational backbone</li>
+          <li>Companies needing a trusted, accountable local presence</li>
+          <li>Foreign firms navigating import licensing, FSSAI, BIS, or DGFT requirements</li>
+        </ul>
+      </div>
+
+      <div class="audience-card audience-card--india" data-animate>
+        <div class="audience-type">Indian Exporters &amp; Manufacturers</div>
+        <h3>Structured 3PL &amp; global buyer access</h3>
+        <p>For Indian businesses that are ready to scale exports but lack the structured logistics infrastructure, documentation capability, or international buyer relationships to do it efficiently.</p>
+        <ul class="audience-list">
+          <li>Indian manufacturers entering export markets for the first time</li>
+          <li>Trading houses seeking structured 3PL and compliance support</li>
+          <li>SMEs and mid-market businesses building export operations</li>
+          <li>Companies looking for a distribution and warehousing partner</li>
+          <li>Businesses seeking access to vetted international buyer networks</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT LOAAS DELIVERS -->
+<section class="section" id="delivers">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>What LOaaS Delivers</div>
+    <h2 class="section-title" data-animate>Four pillars of<br />operational capability.</h2>
+    <div class="delivers-grid">
+
+      <div class="deliver-card" data-animate>
+        <div class="deliver-num">01 / Strategic Market Access Infrastructure</div>
+        <h4>Be in the market before you're in the market.</h4>
+        <ul>
+          <li>India market entry advisory and go-to-market strategy</li>
+          <li>Local partner, distributor, and buyer identification and qualification</li>
+          <li>Regulatory pathway mapping — import licensing, FSSAI, BIS, DGFT where applicable</li>
+          <li>Representation with Indian trade bodies, industry associations, and key buyers</li>
+          <li>Commercial intelligence on pricing, competition, and demand landscape</li>
+        </ul>
+      </div>
+
+      <div class="deliver-card" data-animate>
+        <div class="deliver-num">02 / End-to-End 3PL Execution</div>
+        <h4>Every shipment. Managed end-to-end.</h4>
+        <ul>
+          <li>Freight coordination — air, sea, and surface — inbound and outbound</li>
+          <li>Customs clearance and end-to-end EXIM documentation management</li>
+          <li>Warehousing and bonded storage solutions, flexible to your volume</li>
+          <li>First-mile collection and last-mile distribution</li>
+          <li>Carrier selection, rate negotiation, and transit optimisation</li>
+        </ul>
+      </div>
+
+      <div class="deliver-card" data-animate>
+        <div class="deliver-num">03 / Operational &amp; Compliance Management</div>
+        <h4>Complexity absorbed. Compliance assured.</h4>
+        <ul>
+          <li>EXIM compliance — HS code classification, DGFT filings, FEMA compliance</li>
+          <li>Import/export documentation — commercial invoices, packing lists, certificates of origin</li>
+          <li>Purchase order management, vendor coordination, and supplier communication</li>
+          <li>Invoice processing and trade finance facilitation</li>
+          <li>Operational reporting, dashboards, and transparency into all active logistics</li>
+        </ul>
+      </div>
+
+      <div class="deliver-card" data-animate>
+        <div class="deliver-num">04 / Growth Enablement</div>
+        <h4>From market entry to market leadership.</h4>
+        <ul>
+          <li>Buyer introduction and trade relationship facilitation</li>
+          <li>Market intelligence — competitive landscape, pricing benchmarks, demand signals</li>
+          <li>Operational scaling support — from pilot shipments to full commercial volume</li>
+          <li>Strategic review and quarterly performance reporting</li>
+          <li>Infrastructure evolution planning as your India operation scales</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- 90-DAY PILOT -->
+<section class="section section--dark" id="pilot">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Structured Entry</div>
+    <div class="pilot-header" data-animate>
+      <h2 class="section-title" style="margin-bottom:0">90-Day India<br />Market Pilot Programme</h2>
+      <div class="pilot-retainer">
+        <div class="ret-label">Retainer Range</div>
+        <div class="ret-amount">$4,000 – $8,000 <span style="font-size:14px;font-weight:500;color:var(--muted)">/month</span></div>
+      </div>
+    </div>
+    <p class="body-text" data-animate style="max-width:600px;margin-bottom:40px">A structured 90-day engagement to validate your India strategy, execute your first commercial cycle, and generate the data you need to make a confident scale decision.</p>
+    <div class="pilot-grid" data-animate>
+
+      <div class="pilot-month">
+        <div class="month-label">Month 01</div>
+        <h4>Assessment &amp; Infrastructure Setup</h4>
+        <ul>
+          <li>Business objective mapping and India readiness assessment</li>
+          <li>Regulatory compliance review and documentation preparation</li>
+          <li>Vendor, supplier, and logistics partner identification</li>
+          <li>Operational SOPs, reporting framework, and communication protocols established</li>
+          <li>Regulatory filings and pre-clearance preparations initiated</li>
+        </ul>
+      </div>
+
+      <div class="pilot-month">
+        <div class="month-label">Month 02</div>
+        <h4>First Commercial Execution</h4>
+        <ul>
+          <li>First shipment(s) processed end-to-end under LOaaS management</li>
+          <li>Customs clearance and final delivery coordinated</li>
+          <li>Buyer or partner introductions and commercial meetings facilitated</li>
+          <li>Live operational adjustments based on ground feedback</li>
+          <li>Compliance reporting and documentation review completed</li>
+        </ul>
+      </div>
+
+      <div class="pilot-month">
+        <div class="month-label">Month 03</div>
+        <h4>Optimisation &amp; Scale Decision</h4>
+        <ul>
+          <li>Full performance review against pilot KPIs and commercial objectives</li>
+          <li>Landed cost analysis and optimisation recommendations</li>
+          <li>Buyer relationship status and pipeline assessment</li>
+          <li>Go/no-go decision framework with supporting data</li>
+          <li>Scale roadmap and ongoing retainer structure proposed</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="body-text" style="margin-top:28px;font-size:14px">Retainer covers strategic oversight, compliance management, operational coordination, and reporting. Transactional costs (freight, duties, warehousing) billed separately at actuals. Retainer range subject to scope, trade volume, and market complexity.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ENGAGEMENT MODEL -->
+<section class="section" id="engagement">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>How We Engage</div>
+    <h2 class="section-title" data-animate>A model built on<br />aligned incentives.</h2>
+    <p class="body-text" data-animate style="max-width:560px">LOaaS engagements are structured in three layers. Every layer is designed to ensure that Blenz's commercial interest is directly aligned with your outcomes.</p>
+    <div class="engagement-grid" data-animate>
+
+      <div class="engagement-card">
+        <div class="eng-num">01</div>
+        <h4>Retainer</h4>
+        <p>A monthly management fee covering strategic oversight, compliance management, vendor and buyer relationships, and operational coordination. This is the foundation of the engagement — it ensures continuity, accountability, and dedicated resource allocation to your business.</p>
+      </div>
+
+      <div class="engagement-card">
+        <div class="eng-num">02</div>
+        <h4>Execution</h4>
+        <p>Transactional costs — freight, customs duties, warehousing, and third-party fees — are billed at actuals, passed through with full transparency. No hidden markup. You see every line item. This keeps the cost structure honest and your landed cost calculations accurate.</p>
+      </div>
+
+      <div class="engagement-card">
+        <div class="eng-num">03</div>
+        <h4>Revenue Share</h4>
+        <p>For select engagements where Blenz actively drives buyer introductions, distributor development, or commercial relationships, a performance-based revenue share can be structured alongside or in place of part of the retainer. We grow when you grow.</p>
+        <span class="eng-optional">Optional</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CLOSING + CTA -->
+<section class="closing-section section--dark">
+  <div class="container">
+    <p class="eyebrow eyebrow--gold" style="text-align:center;margin-bottom:32px" data-animate>The LOaaS Thesis</p>
+    <h2 class="closing-statement" data-animate>
+      LOaaS transforms India from a complex regulatory landscape into a <em>structured growth opportunity.</em>
+    </h2>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap" data-animate>
+      <a href="../index.html#contact" class="btn btn-gold" data-service="logistics">Book a Strategic Consultation →</a>
+      <a href="../index.html#contact" class="btn btn-outline" data-service="logistics">Send Us a Brief</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING & ENGAGEMENT MODEL -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Pricing &amp; Engagement</div>
+    <h2 class="section-title" data-animate>Structured Engagement,<br />Not Per-Shipment Billing.</h2>
+    <p class="body-text" data-animate style="max-width:580px">LOaaS is delivered as a managed strategic service with execution capability. Engagements are retainer-based, while logistics execution is scoped separately — giving you transparency on both strategic and operational costs.</p>
+    <div class="pricing-tier-grid" data-animate>
+
+      <div class="tier-card">
+        <div class="tier-name">Tier 1</div>
+        <div class="tier-title">Market Entry Explorer</div>
+        <div class="tier-price">$3,500 – $5,000</div>
+        <div class="tier-price-label">per month · retainer</div>
+        <ul class="tier-list">
+          <li>India feasibility mapping and market assessment</li>
+          <li>Regulatory pathway structure and compliance overview</li>
+          <li>Import and logistics blueprint</li>
+          <li>Pilot shipment support and coordination</li>
+          <li>Ideal customer profile and market entry definition</li>
+        </ul>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-name">Tier 2</div>
+        <div class="tier-title">India Operations Builder</div>
+        <div class="tier-price">$6,000 – $9,000</div>
+        <div class="tier-price-label">per month · retainer</div>
+        <ul class="tier-list">
+          <li>Customs clearance and end-to-end 3PL execution</li>
+          <li>Warehousing coordination and inventory management</li>
+          <li>Buyer introductions and commercial facilitation</li>
+          <li>Distribution structure setup and optimisation</li>
+          <li>Vendor and carrier selection and management</li>
+        </ul>
+      </div>
+
+      <div class="tier-card tier-card--featured">
+        <div class="tier-name">Tier 3</div>
+        <div class="tier-title">India Growth Partner</div>
+        <div class="tier-price">$10,000 – $18,000</div>
+        <div class="tier-price-label">per month · retainer</div>
+        <ul class="tier-list">
+          <li>Dedicated logistics office model — full operational coverage</li>
+          <li>India sourcing programmes and supplier development</li>
+          <li>Regional distribution planning and network buildout</li>
+          <li>Continuous cost and process optimisation</li>
+          <li>Executive advisory and strategic market guidance</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="tier-note" data-animate>Execution fees, freight costs, and shipment handling are scoped separately based on volume and complexity. All retainer tiers include full operational reporting and a dedicated point of contact.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHERE LOAAS FITS -->
+<section class="section section--dark" id="positioning">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Market Positioning</div>
+    <h2 class="section-title" data-animate>Not Freight. Not Consulting.<br />A Strategic Execution Model.</h2>
+    <p class="body-text" data-animate style="max-width:560px">Most India market entry attempts fail not from lack of intent, but from a gap between strategy and execution. LOaaS closes that gap.</p>
+    <div class="compare-wrap" data-animate>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Execution</th>
+            <th>Strategy</th>
+            <th>Market Access</th>
+            <th>Infrastructure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Freight Forwarder</td>
+            <td><span class="score score--high">High</span></td>
+            <td><span class="score score--none">—</span></td>
+            <td><span class="score score--none">None</span></td>
+            <td><span class="score score--none">None</span></td>
+          </tr>
+          <tr>
+            <td>Warehouse Provider</td>
+            <td><span class="score score--medium">Medium</span></td>
+            <td><span class="score score--none">—</span></td>
+            <td><span class="score score--none">None</span></td>
+            <td><span class="score score--medium">Physical only</span></td>
+          </tr>
+          <tr>
+            <td>Consultant</td>
+            <td><span class="score score--none">—</span></td>
+            <td><span class="score score--high">High</span></td>
+            <td><span class="score score--medium">Medium</span></td>
+            <td><span class="score score--none">None</span></td>
+          </tr>
+          <tr class="loaas-row">
+            <td>LOaaS</td>
+            <td><span class="score score--high">High</span></td>
+            <td><span class="score score--high">High</span></td>
+            <td><span class="score score--high">High</span></td>
+            <td><span class="score score--pp">Plug-and-Play</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-caption" data-animate>LOaaS combines execution capability, strategic advisory, and active market access into one embedded engagement — structured as a partnership, not a transaction.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- HOW COMPANIES TYPICALLY START -->
+<section class="section" id="start">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Common Entry Points</div>
+    <h2 class="section-title" data-animate>How Companies<br />Typically Start.</h2>
+    <p class="body-text" data-animate style="max-width:520px">There is no single path to India. But most engagements begin with one of three commercial objectives.</p>
+    <div class="entry-grid" data-animate>
+
+      <div class="entry-card">
+        <div class="entry-num">01</div>
+        <h4>Testing India Without Entity Setup</h4>
+        <p>The most common starting point. A global company has demand or intent in India but is not ready to incorporate. LOaaS provides the operational and compliance framework to execute commercially without a legal entity — using Blenz as the operational vehicle.</p>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-num">02</div>
+        <h4>Using India as a Sourcing Hub</h4>
+        <p>Businesses identify India as a competitive sourcing market but lack the ground infrastructure to access it reliably. LOaaS handles supplier onboarding, procurement structure, quality coordination, and export logistics — creating a dependable sourcing channel.</p>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-num">03</div>
+        <h4>Building India Distribution</h4>
+        <p>A brand or manufacturer is ready to establish a distribution presence in India. LOaaS activates warehousing, manages customs clearance, and facilitates introductions to the buyer and distributor network — compressing the market entry timeline significantly.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHEN LOAAS MAKES SENSE -->
+<section class="section section--dark" id="fit">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Qualification Criteria</div>
+    <h2 class="section-title" data-animate>When LOaaS<br />Makes Sense.</h2>
+    <p class="body-text" data-animate style="max-width:520px">LOaaS is a high-engagement model. It works best when the commercial intent is serious and the operational gap is real.</p>
+    <div class="sense-grid" data-animate>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>You are entering India for the first time and need a structured approach, not improvisation</p>
+      </div>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>You have no local logistics or compliance structure in India and cannot build one quickly</p>
+      </div>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>Regulatory complexity is slowing your shipments, costing money, or creating risk</p>
+      </div>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>You need a reliable, accountable India partner — not a one-off vendor relationship</p>
+      </div>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>You are treating India as a strategic growth market, not an opportunistic one</p>
+      </div>
+      <div class="sense-item">
+        <div class="sense-check">✓</div>
+        <p>You are exploring India as a sourcing market and need procurement and logistics infrastructure to do it properly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT CLIENTS ACHIEVE IN 90 DAYS -->
+<section class="section" id="outcomes">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Measurable Outcomes</div>
+    <h2 class="section-title" data-animate>What Clients Achieve<br />in 90 Days.</h2>
+    <p class="body-text" data-animate style="max-width:520px">The 90-day pilot is designed to generate real, verifiable outcomes — not just reports and recommendations.</p>
+    <div class="outcomes-grid" data-animate>
+      <div class="outcome-item">
+        <div class="outcome-icon">⊕</div>
+        <div>
+          <h4>Operational India Presence</h4>
+          <p>A functioning on-ground operational structure — without incorporation or team-building.</p>
+        </div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-icon">⇄</div>
+        <div>
+          <h4>Logistics Infrastructure Activated</h4>
+          <p>Vendor network, carrier relationships, warehousing, and documentation systems are live and operational.</p>
+        </div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-icon">◉</div>
+        <div>
+          <h4>First Shipments Executed</h4>
+          <p>At least one complete commercial cycle processed — customs cleared, delivered, and documented.</p>
+        </div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-icon">◈</div>
+        <div>
+          <h4>Market Signals Captured</h4>
+          <p>Buyer feedback, demand validation, and competitive intelligence gathered from active market engagement.</p>
+        </div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-icon">⊙</div>
+        <div>
+          <h4>Compliance Clarity Established</h4>
+          <p>Full regulatory picture documented — import requirements, duties, licences, and ongoing obligations mapped.</p>
+        </div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-icon">⊞</div>
+        <div>
+          <h4>Scale Roadmap Created</h4>
+          <p>A data-backed decision framework for scaling the India operation — with cost models, risk assessment, and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- IDEAL CLIENT PROFILE -->
+<section class="section section--dark" id="icp">
+  <div class="container">
+    <div class="eyebrow eyebrow--gold" data-animate>Ideal Client Profile</div>
+    <h2 class="section-title" data-animate>Built for businesses<br />with a serious India mandate.</h2>
+    <p class="body-text" data-animate style="max-width:520px">LOaaS is not a mass-market product. We work with a defined set of business types where the model delivers maximum value.</p>
+    <div class="icp-grid" data-animate>
+      <div class="icp-item">
+        <div class="icp-icon">⊕</div>
+        <p>Global manufacturers entering India for distribution or market access</p>
+      </div>
+      <div class="icp-item">
+        <div class="icp-icon">⇄</div>
+        <p>International trading companies seeking a structured India sourcing model</p>
+      </div>
+      <div class="icp-item">
+        <div class="icp-icon">◉</div>
+        <p>Global brands testing the South Asia market without entity setup</p>
+      </div>
+      <div class="icp-item">
+        <div class="icp-icon">◈</div>
+        <p>Indian exporters building compliant, scalable international operations</p>
+      </div>
+      <div class="icp-item">
+        <div class="icp-icon">⊙</div>
+        <p>Mid-market EXIM businesses that need operational depth, not just freight</p>
+      </div>
+      <div class="icp-item">
+        <div class="icp-icon">⊞</div>
+        <p>Businesses where India is a strategic priority — not an experiment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta-final">
+  <div class="container final-cta-inner">
+    <div class="eyebrow eyebrow--gold" style="margin-bottom:24px" data-animate>Start the Conversation</div>
+    <h2 data-animate>Build Your India<br />Execution Strategy.</h2>
+    <p class="cta-copy" data-animate>Start with a structured discussion. We map opportunity, complexity, and execution pathways — so your first step into India is a deliberate one.</p>
+    <div data-animate>
+      <a href="../index.html#contact" class="btn btn-gold" style="font-size:16px;padding:14px 32px" data-service="logistics">Book Strategic Consultation →</a>
+      <p class="cta-subtext">For global suppliers, exporters, and growth-focused trade businesses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="nav-logo">Blenz<span class="logo-dot">.</span></a>
+      <p>LOaaS &amp; AI tools for business professionals.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Solutions</p>
+        <a href="../AI-SaaS/oscar.html">Oscar App</a>
+        <a href="solutions.html">LOaaS</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <a href="../AI-SaaS/privacy.html">Privacy Policy</a>
+        <a href="../AI-SaaS/terms.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Blenz. All rights reserved.</p>
+    <p>connect@blenz.in</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
